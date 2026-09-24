@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calendario de encuentros · REF Buenos Aires</title>
+<meta name="description" content="Agenda de encuentros REF Buenos Aires de septiembre a fin de año 2026. Cupos limitados.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1C1B18;--cream:#F5F1E8;--cream-dim:#ECE6D8;--green:#4B7A62;--green-deep:#33544B;--gold:#C79A3E;--text-dark:#2A2822;--text-muted:#8b8578;--sage:#8FBBA3;--line:rgba(28,27,24,.13)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--text-dark);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5}
+h1,h2,h3,.serif{font-family:'Fraunces',Georgia,serif;font-weight:500;letter-spacing:-.015em}
+a{color:var(--green);text-decoration:none}a:hover{color:var(--green-deep)}
+.icon{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.wrap{max-width:1000px;margin:0 auto;padding-left:clamp(20px,5vw,56px);padding-right:clamp(20px,5vw,56px)}
+
+header{background:var(--ink);color:var(--cream);position:relative;overflow:hidden;padding:clamp(38px,6vw,64px) 0 clamp(34px,5vw,52px)}
+header .dots{position:absolute;top:0;right:0;height:100%;width:min(300px,38vw);opacity:.85}
+header .dots circle{fill:var(--green)}
+.hbar{display:flex;justify-content:space-between;align-items:center;gap:20px;position:relative}
+.hbar img{height:clamp(30px,4.4vw,40px);display:block}
+.hbar .place{font-size:clamp(11px,1.5vw,12.5px);font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--sage);text-align:right}
+h1{font-size:clamp(34px,7vw,62px);line-height:1;margin-top:clamp(26px,4vw,40px);position:relative}
+h1 em{color:var(--green);font-style:italic;font-weight:400}
+.sub{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(17px,2.4vw,23px);color:rgba(245,241,232,.78);margin-top:14px;max-width:38ch;position:relative;text-wrap:pretty}
+.alert{display:flex;align-items:center;gap:11px;margin-top:clamp(24px,4vw,34px);padding:13px 20px;border:1px solid rgba(199,154,62,.5);border-radius:100px;background:rgba(199,154,62,.1);width:fit-content;max-width:100%;position:relative}
+.alert .icon{width:19px;height:19px;color:var(--gold);flex-shrink:0}
+.alert b{color:#E7C070;font-weight:700}
+.alert span{font-size:clamp(12.5px,1.8vw,14.5px);color:rgba(245,241,232,.85)}
+.open{display:flex;gap:13px;align-items:flex-start;margin-top:14px;padding:15px 20px;border:1px solid rgba(143,187,163,.4);border-radius:14px;background:rgba(75,122,98,.14);max-width:64ch;position:relative}
+.open .icon{width:20px;height:20px;color:var(--sage);flex-shrink:0;margin-top:1px}
+.open p{font-size:clamp(12.5px,1.8vw,14.5px);color:rgba(245,241,232,.85);text-wrap:pretty}
+.open b{color:#A8D0BA;font-weight:700}
+
+.legend{background:var(--cream-dim);border-bottom:1px solid var(--line)}
+.legend .in{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding-top:16px;padding-bottom:16px}
+.jump{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);margin-right:6px}
+.legend a{border:1px solid var(--line);background:#fff;border-radius:100px;padding:9px 17px;font-size:13.5px;font-weight:600;color:var(--text-dark);transition:background .15s,border-color .15s}
+.legend a:hover{background:var(--green-deep);border-color:var(--green-deep);color:var(--cream)}
+
+main{padding-bottom:clamp(50px,7vw,84px)}
+.month{padding-top:clamp(38px,5vw,56px)}
+.mh{display:flex;align-items:baseline;gap:16px;padding-bottom:14px;border-bottom:2px solid var(--ink)}
+.mh h2{font-size:clamp(24px,4vw,34px)}
+.mh .c{font-size:13px;font-weight:600;color:var(--text-muted);white-space:nowrap}
+
+.ev{display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:clamp(16px,3vw,30px);align-items:start;padding:clamp(22px,3vw,28px) 0;border-bottom:1px solid var(--line)}
+.date{text-align:center;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 8px 13px}
+.date .dow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green)}
+.date .d{font-family:'Fraunces',serif;font-size:40px;line-height:1;margin-top:4px;color:var(--ink)}
+.date .m{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-top:5px}
+.info{min-width:0}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:9px}
+.kind{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);background:var(--green-deep);border-radius:100px;padding:5px 12px}
+.kind.gold{background:var(--gold);color:var(--ink)}
+.kind.out{background:transparent;color:var(--green-deep);border:1px solid rgba(51,84,75,.4)}
+.ev h3{font-size:clamp(19px,2.6vw,24px);line-height:1.2;text-wrap:pretty}
+.ev .meta{display:flex;flex-wrap:wrap;gap:7px 20px;margin-top:11px}
+.ev .meta div{display:flex;align-items:center;gap:7px;font-size:14px;color:var(--text-muted)}
+.ev .meta .icon{width:16px;height:16px;color:var(--green);flex-shrink:0}
+.ev .meta .hr{color:var(--text-dark);font-weight:600}
+.ev .note{font-size:13.5px;color:var(--text-muted);margin-top:10px;max-width:62ch;text-wrap:pretty}
+.cta{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.btn{display:inline-flex;align-items:center;gap:9px;background:var(--green-deep);color:var(--cream);border-radius:100px;padding:13px 24px;font-size:14.5px;font-weight:600;white-space:nowrap;transition:background .15s,transform .15s}
+.btn:hover{background:var(--ink);color:var(--cream);transform:translateY(-1px)}
+.btn .icon{width:16px;height:16px}
+.btn.off{background:transparent;color:var(--text-muted);border:1px dashed rgba(28,27,24,.3);cursor:default}
+.btn.off:hover{background:transparent;color:var(--text-muted);transform:none}
+.cup{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:var(--gold);white-space:nowrap}
+.cup .icon{width:14px;height:14px}
+
+footer{background:var(--green-deep);color:var(--cream);padding:clamp(30px,4vw,44px) 0}
+footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:18px}
+footer .l{font-family:'Fraunces',serif;font-size:clamp(18px,2.6vw,24px)}
+footer .l span{display:block;font-family:'Inter',sans-serif;font-size:14px;font-weight:400;color:rgba(245,241,232,.72);margin-top:6px}
+footer .t{border:1.5px solid rgba(245,241,232,.45);border-radius:100px;padding:11px 22px;font-size:14px;font-weight:600}
+@media(max-width:720px){
+ .ev{grid-template-columns:74px minmax(0,1fr);gap:16px}
+ .date .d{font-size:32px}
+ .cta{grid-column:1/-1;flex-direction:row;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+ .btn{padding:12px 20px}
+}
+</style>
+</head>
+<body>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#1C1B18"/><text x="50" y="42" font-family="Georgia,serif" font-size="26" fill="#4B7A62" text-anchor="middle" font-weight="600">REF</text><text x="50" y="64" font-family="Georgia,serif" font-size="11" fill="#F5F1E8" text-anchor="middle" font-style="italic">Calendario</text></svg></template>
+
+<header>
+  <svg class="dots" viewBox="0 0 300 420" preserveAspectRatio="xMaxYMid slice" aria-hidden="true"><circle cx="246" cy="46" r="7"/><circle cx="282" cy="92" r="11"/><circle cx="200" cy="26" r="5"/><circle cx="268" cy="158" r="5"/><circle cx="228" cy="344" r="5"/><circle cx="276" cy="384" r="8"/><circle cx="196" cy="366" r="5"/><circle cx="290" cy="248" r="5"/></svg>
+  <div class="wrap">
+    <div class="hbar">
+      <img src="data:image/png;base64,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" alt="REF">
+      <div class="place">REF Buenos Aires · 2026</div>
+    </div>
+    <h1>Calendario de<br>encuentros <em>Q4</em></h1>
+    <p class="sub">De septiembre a fin de año: todo lo que viene para los miembros REF en Buenos Aires.</p>
+    <div class="alert"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3 2.8 19.5h18.4L12 3z"/><path d="M12 9.5v4.5"/><circle cx="12" cy="16.8" r=".9" fill="currentColor" stroke="none"/></svg><span><b>Todos los encuentros tienen cupos limitados.</b> Se confirman por orden de inscripción.</span></div>
+    <div class="open"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3.2 12h17.6"/><path d="M12 3c2.4 2.5 3.6 5.5 3.6 9s-1.2 6.5-3.6 9c-2.4-2.5-3.6-5.5-3.6-9S9.6 5.5 12 3z"/></svg><p><b>¿Sos miembro de Córdoba o Neuquén?</b> Si vas a estar en Buenos Aires en alguna de estas fechas, inscribite igual: los encuentros están abiertos a miembros REF de todo el país.</p></div>
+  </div>
+</header>
+
+<nav class="legend">
+  <div class="wrap in">
+    <div class="jump">Ir a</div>
+    <a href="#septiembre">Septiembre</a>
+    <a href="#octubre">Octubre</a>
+    <a href="#noviembre">Noviembre</a>
+  </div>
+</nav>
+
+<main class="wrap">
+  <section class="month" id="septiembre">
+    <div class="mh"><h2>Septiembre</h2><div class="c">1 encuentro</div></div>
+
+    <article class="ev">
+      <div class="date"><div class="dow">Jueves</div><div class="d">24</div><div class="m">Sep</div></div>
+      <div class="info">
+        <div class="chips"><span class="kind">Jeffersonian</span></div>
+        <h3>Jeffersonian</h3>
+        <div class="meta">
+          <div><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5l3.5 2"/></svg><span class="hr">19:30 a 22:30</span></div>
+          <div><svg class="icon" viewBox="0 0 24 24"><path d="M12 21s7-7.8 7-12.5a7 7 0 1 0-14 0C5 13.2 12 21 12 21z"/><circle cx="12" cy="8.7" r="2.3"/></svg>Checkpoint Charlie</div>
+        </div>
+      </div>
+      <div class="cta">
+        <a class="btn" href="https://forms.gle/PYabVedJVKoKBtAE7" target="_blank" rel="noopener">Inscribirme<svg class="icon" viewBox="0 0 24 24"><path d="M5 12h13"/><path d="M13 6.5 18.5 12 13 17.5"/></svg></a>
+        <div class="cup"><svg class="icon" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19.5c.6-3.1 2.9-4.8 5.5-4.8s4.9 1.7 5.5 4.8"/><circle cx="17.5" cy="9.5" r="2.4"/><path d="M16 14.9c2.2.2 3.9 1.8 4.4 4.6"/></svg>Hasta 12 lugares</div>
+      </div>
+    </article>
+  </section>
+
+  <section class="month" id="octubre">
+    <div class="mh"><h2>Octubre</h2><div class="c">7 encuentros</div></div>
+
+    <article class="ev">
+      <div class="date"><div class="dow">Viernes</div><div class="d">2</div><div class="m">Oct</div></div>
+      <div class="info">
+        <div class="chips"><span class="kind gold">REFnacer</span></div>
+        <h3>REFnacer II con Guillermo Mitre</h3>
+        <div class="meta">
+          <div><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5l3.5 2"/></svg><span class="hr">9:00 a 13:30</span></div>
+          <div><svg class="icon" viewBox="0 0 24 24"><path d="M12 21s7-7.8 7-12.5a7 7 0 1 0-14 0C5 13.2 12 21 12 21z"/><circle cx="12" cy="8.7" r="2.3"/></svg>Pilar</div>
+          <div><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 20c.7-3.4 3.3-5.2 6.5-5.2s5.8 1.8 6.5 5.2"/></svg>Guillermo Mitre</div>
+        </div>
+      </div>
+      <div class="cta">
+        <a class="btn" href="https://forms.gle/1zEKBC3PR4LJyCQa9" target="_blank" rel="noopener">Inscribirme<svg class="icon" viewBox="0 0 24 24"><path d="M5 12h13"/><path d="M13 6.5 18.5 12 13 17.5"/></svg></a>
+        <div class="cup"><svg class="icon" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19.5c.6-3.1 2.9-4.8 5.5-4.8s4.9 1.7 5.5 4.8"/><circle cx="17.5" cy="9.5" r="2.4"/><path d="M16 14.9c2.2.2 3.9 1.8 4.4 4.6"/></svg>Cupos limitados</div>
+      </div>
+    </article>
+
+    <article class="ev">
+      <div class="date"><div class="dow">Martes</div><div class="d">6</div><div class="m">Oct</div></div>
+      <div class="info">
+        <div class="chips"><span class="kind">Workshop</span></div>
+        <h3>Workshop en LHH</h3>
+        <div class="meta">
+          <div><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5l3.5 2"/></svg><span class="hr">9:00 a 12:00</span></div>
+          <div><svg class="icon" viewBox="0 0 24 24"><path d="M12 21s7-7.8 7-12.5a7 7 0 1 0-14 0C5 13.2 12 21 12 21z"/><circle cx="12" cy="8.7" r="2.3"/></svg>Oficinas de LHH</div>
+        </div>
+      </div>
+      <div class="cta">
+        <a class="btn" href="https://forms.gle/STsvSUSgjtruHiz9A" target="_blank" rel="noopener">Inscribirme<svg class="icon" viewBox="0 0 24 24"><path d="M5 12h13"/><path d="M13 6.5 18.5 12 13 17.5"/></svg></a>
+        <div class="cup"><svg class="icon" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19.5c.6-3.1 2.9-4.8 5.5-4.8s4.9 1.7 5.5 4.8"/><circle cx="17.5" cy="9.5" r="2.4"/><path d="M16 14.9c2.2.2 3.9 1.8 4.4 4.6"/></svg>Cupos limitados</div>
+      </div>
+    </article>
+
+    <article class="ev">
+      <div class="date"><div class="dow">Miércoles</div><div class="d">7</div><div class="m">Oct</div></div>
+      <div class="info">
+        <div class="chips"><span class="kind">Almuerzo</span></div>
+        <h3>Almuerzo con Marvik</h3>
+        <div class="meta">
+          <div><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5l3.5 2"/></svg><span class="hr">12:30 a 15:00</span></div>
+          <div><svg class="icon" viewBox="0 0 24 24"><path d="M12 21s7-7.8 7-12.5a7 7 0 1 0-14 0C5 13.2 12 21 12 21z"/><circle cx="12" cy="8.7" r="2.3"/></svg>Elena · Four Seasons Hotel</div>
+        </div>
+      </div>
+      <div class="cta">
+        <a class="btn" href="https://forms.gle/YDojXb8PF7sBTRoa6" target="_blank" rel="noopener">Inscribirme<svg class="icon" viewBox="0 0 24 24"><path d="M5 12h13"/><path d="M13 6.5 18.5 12 13 17.5"/></svg></a>
+        <div class="cup"><svg class="icon" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19.5c.6-3.1 2.9-4.8 5.5-4.8s4.9 1.7 5.5 4.8"/><circle cx="17.5" cy="9.5" r="2.4"/><path d="M16 14.9c2.2.2 3.9 1.8 4.4 4.6"/></svg>Hasta 10 lugares</div>
+      </div>
+    </article>
+
+    <article class="ev">
+      <div class="date"><div class="dow">Martes</div><div class="d">13</div><div class="m">Oct</div></div>
+      <div class="info">
+        <div class="chips"><span class="kind">Desayuno</span><span class="kind out">Inteligencia artificial</span></div>
+        <h3>Desayuno con FK Tech</h3>
+        <div class="meta">
+          <div><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5l3.5 2"/></svg><span class="hr">9:00 a 11:00</span></div>
+          <div><svg class="icon" viewBox="0 0 24 24"><path d="M12 21s7-7.8 7-12.5a7 7 0 1 0-14 0C5 13.2 12 21 12 21z"/><circle cx="12" cy="8.7" r="2.3"/></svg>Lugar a confirmar</div>
+        </div>
+      </div>
+      <div class="cta">
+        <a class="btn" href="https://forms.gle/fpB12g2NFcrn6ic88" target="_blank" rel="noopener">Inscribirme<svg class="icon" viewBox="0 0 24 24"><path d="M5 12h13"/><path d="M13 6.5 18.5 12 13 17.5"/></svg></a>
+        <div class="cup"><svg class="icon" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19.5c.6-3.1 2.9-4.8 5.5-4.8s4.9 1.7 5.5 4.8"/><circle cx="17.5" cy="9.5" r="2.4"/><path d="M16 14.9c2.2.2 3.9 1.8 4.4 4.6"/></svg>Hasta 15 lugares</div>
+      </div>
+    </article>
+
+    <article class="ev">
+      <div class="date"><div class="dow">Jueves</div><div class="d">15</div><div class="m">Oct</div></div>
+      <div class="info">
+        <div class="chips"><span class="kind">Jeffersonian</span></div>
+        <h3>Jeffersonian</h3>
+        <div class="meta">
+          <div><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5l3.5 2"/></svg><span class="hr">19:30 a 22:30</span></div>
+          <div><svg class="icon" viewBox="0 0 24 24"><path d="M12 21s7-7.8 7-12.5a7 7 0 1 0-14 0C5 13.2 12 21 12 21z"/><circle cx="12" cy="8.7" r="2.3"/></svg>Checkpoint Charlie</div>
+        </div>
+      </div>
+      <div class="cta">
+        <a class="btn" href="https://forms.gle/4i8CoeLwk3YG9oYBA" target="_blank" rel="noopener">Inscribirme<svg class="icon" viewBox="0 0 24 24"><path d="M5 12h13"/><path d="M13 6.5 18.5 12 13 17.5"/></svg></a>
+        <div class="cup"><svg class="icon" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19.5c.6-3.1 2.9-4.8 5.5-4.8s4.9 1.7 5.5 4.8"/><circle cx="17.5" cy="9.5" r="2.4"/><path d="M16 14.9c2.2.2 3.9 1.8 4.4 4.6"/></svg>Hasta 12 lugares</div>
+      </div>
+    </article>
+
+    <article class="ev">
+      <div class="date"><div class="dow">Miércoles</div><div class="d">28</div><div class="m">Oct</div></div>
+      <div class="info">
+        <div class="chips"><span class="kind gold">Unique Experience</span></div>
+        <h3>Umbrales Resonantes · edición ritualizada por Virginia Guerrero</h3>
+        <div class="meta">
+          <div><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5l3.5 2"/></svg><span class="hr">18:00 a 20:30</span></div>
+          <div><svg class="icon" viewBox="0 0 24 24"><path d="M12 21s7-7.8 7-12.5a7 7 0 1 0-14 0C5 13.2 12 21 12 21z"/><circle cx="12" cy="8.7" r="2.3"/></svg>Umbral</div>
+          <div><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 20c.7-3.4 3.3-5.2 6.5-5.2s5.8 1.8 6.5 5.2"/></svg>Virginia Guerrero</div>
+        </div>
+        <p class="note">Un viaje sonoro para encontrarnos con el silencio interior. Abierta a acompañantes de miembros mayores de 20 años.</p>
+      </div>
+      <div class="cta">
+        <a class="btn" href="https://forms.gle/mzeYxnyEqvQzm69d8" target="_blank" rel="noopener">Inscribirme<svg class="icon" viewBox="0 0 24 24"><path d="M5 12h13"/><path d="M13 6.5 18.5 12 13 17.5"/></svg></a>
+        <div class="cup"><svg class="icon" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19.5c.6-3.1 2.9-4.8 5.5-4.8s4.9 1.7 5.5 4.8"/><circle cx="17.5" cy="9.5" r="2.4"/><path d="M16 14.9c2.2.2 3.9 1.8 4.4 4.6"/></svg>Máximo 22 lugares</div>
+      </div>
+    </article>
+
+    <article class="ev">
+      <div class="date"><div class="dow">Jueves</div><div class="d">29</div><div class="m">Oct</div></div>
+      <div class="info">
+        <div class="chips"><span class="kind">Jeffersonian</span></div>
+        <h3>Jeffersonian</h3>
+        <div class="meta">
+          <div><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5l3.5 2"/></svg><span class="hr">19:30 a 22:30</span></div>
+          <div><svg class="icon" viewBox="0 0 24 24"><path d="M12 21s7-7.8 7-12.5a7 7 0 1 0-14 0C5 13.2 12 21 12 21z"/><circle cx="12" cy="8.7" r="2.3"/></svg>Checkpoint Charlie</div>
+        </div>
+      </div>
+      <div class="cta">
+        <a class="btn" href="https://forms.gle/4i8CoeLwk3YG9oYBA" target="_blank" rel="noopener">Inscribirme<svg class="icon" viewBox="0 0 24 24"><path d="M5 12h13"/><path d="M13 6.5 18.5 12 13 17.5"/></svg></a>
+        <div class="cup"><svg class="icon" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19.5c.6-3.1 2.9-4.8 5.5-4.8s4.9 1.7 5.5 4.8"/><circle cx="17.5" cy="9.5" r="2.4"/><path d="M16 14.9c2.2.2 3.9 1.8 4.4 4.6"/></svg>Hasta 12 lugares</div>
+      </div>
+    </article>
+  </section>
+
+  <section class="month" id="noviembre">
+    <div class="mh"><h2>Noviembre</h2><div class="c">4 encuentros</div></div>
+
+    <article class="ev">
+      <div class="date"><div class="dow">Jueves</div><div class="d">5</div><div class="m">Nov</div></div>
+      <div class="info">
+        <div class="chips"><span class="kind">Jeffersonian</span></div>
+        <h3>Jeffersonian</h3>
+        <div class="meta">
+          <div><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5l3.5 2"/></svg><span class="hr">19:30 a 22:30</span></div>
+          <div><svg class="icon" viewBox="0 0 24 24"><path d="M12 21s7-7.8 7-12.5a7 7 0 1 0-14 0C5 13.2 12 21 12 21z"/><circle cx="12" cy="8.7" r="2.3"/></svg>Checkpoint Charlie</div>
+        </div>
+      </div>
+      <div class="cta">
+        <a class="btn" href="https://forms.gle/4i8CoeLwk3YG9oYBA" target="_blank" rel="noopener">Inscribirme<svg class="icon" viewBox="0 0 24 24"><path d="M5 12h13"/><path d="M13 6.5 18.5 12 13 17.5"/></svg></a>
+        <div class="cup"><svg class="icon" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19.5c.6-3.1 2.9-4.8 5.5-4.8s4.9 1.7 5.5 4.8"/><circle cx="17.5" cy="9.5" r="2.4"/><path d="M16 14.9c2.2.2 3.9 1.8 4.4 4.6"/></svg>Hasta 12 lugares</div>
+      </div>
+    </article>
+
+    <article class="ev">
+      <div class="date"><div class="dow">Jueves</div><div class="d">19</div><div class="m">Nov</div></div>
+      <div class="info">
+        <div class="chips"><span class="kind">Desayuno</span><span class="kind out">Inteligencia artificial</span></div>
+        <h3>Desayuno con Evoltis · IA en acción: de la tendencia a la transformación del negocio</h3>
+        <div class="meta">
+          <div><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5l3.5 2"/></svg><span class="hr">9:00 a 11:00</span></div>
+          <div><svg class="icon" viewBox="0 0 24 24"><path d="M12 21s7-7.8 7-12.5a7 7 0 1 0-14 0C5 13.2 12 21 12 21z"/><circle cx="12" cy="8.7" r="2.3"/></svg>Oficinas de Evoltis · Blas Parera 51, Cocos Capital, piso 10</div>
+        </div>
+        <p class="note">Con Juan Chacón, Fabio Grigorjev (Director de Inteligencia Artificial) y Max Bechara (Owner y Director de Negocios de Evoltis).</p>
+      </div>
+      <div class="cta">
+        <a class="btn" href="https://forms.gle/x8Ze7BFD8MziuNdK8" target="_blank" rel="noopener">Inscribirme<svg class="icon" viewBox="0 0 24 24"><path d="M5 12h13"/><path d="M13 6.5 18.5 12 13 17.5"/></svg></a>
+        <div class="cup"><svg class="icon" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19.5c.6-3.1 2.9-4.8 5.5-4.8s4.9 1.7 5.5 4.8"/><circle cx="17.5" cy="9.5" r="2.4"/><path d="M16 14.9c2.2.2 3.9 1.8 4.4 4.6"/></svg>Hasta 30 lugares</div>
+      </div>
+    </article>
+
+    <article class="ev">
+      <div class="date"><div class="dow">Jueves</div><div class="d">26</div><div class="m">Nov</div></div>
+      <div class="info">
+        <div class="chips"><span class="kind gold">Cocktail</span></div>
+        <h3>Cocktail de cierre de año</h3>
+        <div class="meta">
+          <div><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5l3.5 2"/></svg><span class="hr">18:30 a 21:00</span></div>
+          <div><svg class="icon" viewBox="0 0 24 24"><path d="M12 21s7-7.8 7-12.5a7 7 0 1 0-14 0C5 13.2 12 21 12 21z"/><circle cx="12" cy="8.7" r="2.3"/></svg>Mudra · Av. Córdoba 3942, CABA</div>
+        </div>
+      </div>
+      <div class="cta">
+        <a class="btn" href="https://forms.gle/2LV7Ab5rPaeYRL619" target="_blank" rel="noopener">Inscribirme<svg class="icon" viewBox="0 0 24 24"><path d="M5 12h13"/><path d="M13 6.5 18.5 12 13 17.5"/></svg></a>
+        <div class="cup"><svg class="icon" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19.5c.6-3.1 2.9-4.8 5.5-4.8s4.9 1.7 5.5 4.8"/><circle cx="17.5" cy="9.5" r="2.4"/><path d="M16 14.9c2.2.2 3.9 1.8 4.4 4.6"/></svg>Hasta 30 lugares</div>
+      </div>
+    </article>
+
+    <article class="ev">
+      <div class="date"><div class="dow">Viernes</div><div class="d">27</div><div class="m">Nov</div></div>
+      <div class="info">
+        <div class="chips"><span class="kind">Company Visit</span></div>
+        <h3>Company Visit · Parque de Innovación</h3>
+        <div class="meta">
+          <div><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5l3.5 2"/></svg><span class="hr">10:00 a 12:00</span></div>
+          <div><svg class="icon" viewBox="0 0 24 24"><path d="M12 21s7-7.8 7-12.5a7 7 0 1 0-14 0C5 13.2 12 21 12 21z"/><circle cx="12" cy="8.7" r="2.3"/></svg>Parque de Innovación</div>
+          <div><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 20c.7-3.4 3.3-5.2 6.5-5.2s5.8 1.8 6.5 5.2"/></svg>Yamil Santoro</div>
+        </div>
+      </div>
+      <div class="cta">
+        <a class="btn" href="https://forms.gle/o9h2JjUWPNuvvoMG6" target="_blank" rel="noopener">Inscribirme<svg class="icon" viewBox="0 0 24 24"><path d="M5 12h13"/><path d="M13 6.5 18.5 12 13 17.5"/></svg></a>
+        <div class="cup"><svg class="icon" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19.5c.6-3.1 2.9-4.8 5.5-4.8s4.9 1.7 5.5 4.8"/><circle cx="17.5" cy="9.5" r="2.4"/><path d="M16 14.9c2.2.2 3.9 1.8 4.4 4.6"/></svg>Hasta 30 lugares</div>
+      </div>
+    </article>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap in">
+    <div class="l">Comunidad REF Buenos Aires<span>Abierto a miembros de Córdoba y Neuquén que estén de paso. Las fechas y sedes pueden ajustarse: inscribite temprano, los cupos son limitados.</span></div>
+    <div class="t">12 encuentros · Sep a Nov 2026</div>
+  </div>
+</footer>
+</body>
+</html>
