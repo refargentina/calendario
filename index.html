@@ -78,10 +78,32 @@ footer .l{font-family:'Fraunces',serif;font-size:clamp(18px,2.6vw,24px)}
 footer .l span{display:block;font-family:'Inter',sans-serif;font-size:14px;font-weight:400;color:rgba(245,241,232,.72);margin-top:6px}
 footer .t{border:1.5px solid rgba(245,241,232,.45);border-radius:100px;padding:11px 22px;font-size:14px;font-weight:600}
 @media(max-width:720px){
- .ev{grid-template-columns:74px minmax(0,1fr);gap:16px}
- .date .d{font-size:32px}
- .cta{grid-column:1/-1;flex-direction:row;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
- .btn{padding:12px 20px}
+ header .dots{opacity:.35}
+ .hbar .place{font-size:10.5px;letter-spacing:.12em}
+ .alert{border-radius:14px;align-items:flex-start;padding:13px 16px}
+ .alert .icon{margin-top:2px}
+ .open{padding:13px 16px}
+ .legend .in{gap:7px;padding-top:12px;padding-bottom:12px}
+ .jump{width:100%;margin:0 0 2px}
+ .legend a{padding:8px 14px;font-size:13px}
+ .mh{flex-wrap:wrap;gap:4px 12px}
+ .ev{grid-template-columns:66px minmax(0,1fr);gap:14px;padding:20px 0}
+ .date{padding:9px 4px 10px;border-radius:10px}
+ .date .dow{font-size:9.5px;letter-spacing:.04em}
+ .date .d{font-size:30px}
+ .date .m{font-size:10px;letter-spacing:.06em}
+ .chips{gap:6px}
+ .kind{font-size:10px;letter-spacing:.1em;padding:4px 10px}
+ .ev h3{font-size:18px}
+ .ev .meta{flex-direction:column;gap:6px;margin-top:10px}
+ .ev .meta div{font-size:13.5px;align-items:flex-start}
+ .ev .meta .icon{margin-top:2px}
+ .ev .note{font-size:13px}
+ .cta{grid-column:1/-1;flex-direction:column-reverse;align-items:stretch;gap:10px}
+ .btn{justify-content:center;padding:14px 20px;width:100%}
+ .cup{justify-content:center}
+ footer .in{flex-direction:column;align-items:flex-start}
+ footer .t{font-size:13px}
 }
 </style>
 </head>
@@ -138,8 +160,8 @@ footer .t{border:1.5px solid rgba(245,241,232,.45);border-radius:100px;padding:1
     <article class="ev">
       <div class="date"><div class="dow">Viernes</div><div class="d">2</div><div class="m">Oct</div></div>
       <div class="info">
-        <div class="chips"><span class="kind gold">Beyond Forum</span></div>
-        <h3>REFnacer II con Guillermo Mitre</h3>
+        <div class="chips"><span class="kind gold">Beyond Forum</span><span class="kind out">REFnacer II</span></div>
+        <h3>Experiencia de respiración e inmersión en hielo</h3>
         <div class="meta">
           <div><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5l3.5 2"/></svg><span class="hr">9:00 a 13:30</span></div>
           <div><svg class="icon" viewBox="0 0 24 24"><path d="M12 21s7-7.8 7-12.5a7 7 0 1 0-14 0C5 13.2 12 21 12 21z"/><circle cx="12" cy="8.7" r="2.3"/></svg>Pilar</div>
@@ -187,8 +209,8 @@ footer .t{border:1.5px solid rgba(245,241,232,.45);border-radius:100px;padding:1
     <article class="ev">
       <div class="date"><div class="dow">Martes</div><div class="d">13</div><div class="m">Oct</div></div>
       <div class="info">
-        <div class="chips"><span class="kind">Desayuno</span><span class="kind out">Inteligencia artificial</span></div>
-        <h3>Desayuno con FK Tech</h3>
+        <div class="chips"><span class="kind">Desayuno</span><span class="kind out">Invita FK Tech</span></div>
+        <h3>¿Qué parte de tu empresa seguiría siendo valiosa si la inteligencia se volviera barata?</h3>
         <div class="meta">
           <div><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5l3.5 2"/></svg><span class="hr">9:00 a 11:00</span></div>
           <div><svg class="icon" viewBox="0 0 24 24"><path d="M12 21s7-7.8 7-12.5a7 7 0 1 0-14 0C5 13.2 12 21 12 21z"/><circle cx="12" cy="8.7" r="2.3"/></svg>Lugar a confirmar</div>
